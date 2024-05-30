@@ -1,8 +1,7 @@
+require('dotenv').config()
 const app = require('./app')
 
-// variables
-const port = 4000
-app.listen(port,()=>{
-    console.log('Active at port ',port)
+app.listen(process.env.PORT,()=>{
+    console.log('Active at port ',process.env.PORT)
 })
 

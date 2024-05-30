@@ -1,17 +1,13 @@
-// imports
+
 const  express = require ('express')
+const cors = require('cors')
 const errorAPI = require('./Utils/Error')
-const ErrorHandler = require('./Utils/ErrorHandler')
-const AsyncHandler = require('./Utils/AsyncHandler')
+const paymetRoute = require('./Routes/Payment.routes')
 const app = express()
 app.use(express.json())
-
-
-app.get('/',AsyncHandler(async(req,res,next)=>{
-    if(0)
-        return next(new ErrorHandler("Test",600))
-    res.status(200).json({success:true,message:message})
-}))
+app.use(express.urlencoded({extended: true}));
+app.use(cors({credentials:true}))
+app.use('/payment',paymetRoute)
 
 app.use(errorAPI)
 
